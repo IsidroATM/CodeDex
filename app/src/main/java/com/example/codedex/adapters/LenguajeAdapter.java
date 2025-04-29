@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codedex.R;
@@ -42,14 +43,13 @@ public class LenguajeAdapter extends RecyclerView.Adapter<LenguajeAdapter.ViewHo
         holder.abreviacion.setText(lenguaje.getAbreviacion());
 
         try {
-            holder.container.setBackgroundColor(Color.parseColor(lenguaje.getColorHex()));
+            holder.cardView.setCardBackgroundColor(Color.parseColor(lenguaje.getColorHex()));
         } catch (Exception e) {
             e.printStackTrace();
-            holder.container.setBackgroundColor(Color.LTGRAY);
+            holder.cardView.setCardBackgroundColor(Color.LTGRAY);
         }
 
         holder.itemView.setOnClickListener(v -> {
-            // Pasamos los datos del lenguaje a la siguiente actividad
             Intent intent = new Intent(context, DetalleLenguajeActivity.class);
             intent.putExtra("lenguaje", lenguaje);
             context.startActivity(intent);
@@ -61,7 +61,6 @@ public class LenguajeAdapter extends RecyclerView.Adapter<LenguajeAdapter.ViewHo
         return lenguajes.size();
     }
 
-    // Método para agregar más lenguajes al adaptador
     public void addLenguajes(List<LenguajeProgramacion> nuevosLenguajes) {
         int posicionInicial = lenguajes.size();
         lenguajes.addAll(nuevosLenguajes);
@@ -70,13 +69,13 @@ public class LenguajeAdapter extends RecyclerView.Adapter<LenguajeAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView nombre, abreviacion;
-        View container;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.textNombreLenguaje);
             abreviacion = itemView.findViewById(R.id.textAbreviacionLenguaje);
-            container = itemView.findViewById(R.id.containerLenguaje);
+            cardView = (CardView) itemView; // Como item_lenguaje.xml ahora es un CardView de raíz
         }
     }
 }

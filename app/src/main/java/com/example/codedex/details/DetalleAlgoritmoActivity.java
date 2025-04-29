@@ -1,6 +1,7 @@
 package com.example.codedex.details;
 
 import android.os.Bundle;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import com.example.codedex.models.Algoritmo;
 public class DetalleAlgoritmoActivity extends AppCompatActivity {
 
     private TextView tvNombre, tvDescripcion, tvProyectos, tvCsharp, tvJava, tvPython;
+
+    private ScrollView scrollDetalleAlgoritmo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class DetalleAlgoritmoActivity extends AppCompatActivity {
 
         // Recibes el objeto Algoritmo completo
         Algoritmo algoritmo = (Algoritmo) getIntent().getSerializableExtra("algoritmo");
+        scrollDetalleAlgoritmo = findViewById(R.id.scrollDetalleAlgoritmo);
 
         if (algoritmo != null) {
             // Ahora llenas los TextViews directamente con los datos del algoritmo
@@ -38,6 +42,13 @@ public class DetalleAlgoritmoActivity extends AppCompatActivity {
                 tvJava.setText(algoritmo.getSintaxis().getJava());
                 tvPython.setText(algoritmo.getSintaxis().getPython());
             }
+
+            try {
+                scrollDetalleAlgoritmo.setBackgroundColor(android.graphics.Color.parseColor(algoritmo.getColorFondo()));
+            } catch (Exception e) {
+                scrollDetalleAlgoritmo.setBackgroundColor(android.graphics.Color.LTGRAY); // fallback
+            }
+
         } else {
             // Si por alguna razón no llegó el objeto
             tvNombre.setText("Algoritmo no encontrado");

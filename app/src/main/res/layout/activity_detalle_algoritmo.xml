@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollDetalleAlgoritmo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -8,33 +9,36 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
-        <!-- Título: Algoritmo -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Algoritmo"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="16dp"/>
-
-        <!-- Contenedor para el nombre del algoritmo -->
-        <TextView
-            android:id="@+id/tvNombre"
+        <!-- Tarjeta con el nombre y la complejidad -->
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginBottom="8dp"
-            android:padding="12dp"
+            android:padding="16dp"
             android:background="@drawable/rounded_border"
-            android:gravity="center"/>
+            android:layout_marginBottom="24dp">
 
-        <!-- Espacio entre secciones -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="8dp"/>
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvComplejidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"
+                android:gravity="center" />
+        </LinearLayout>
 
         <!-- Título: Descripción -->
         <TextView
@@ -43,8 +47,7 @@
             android:text="Descripción"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp" />
 
         <!-- Contenedor para la descripción -->
         <TextView
@@ -52,14 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:layout_marginBottom="8dp"
             android:padding="12dp"
-            android:background="@drawable/rounded_border"/>
-
-        <!-- Espacio entre secciones -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="8dp"/>
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_border" />
 
         <!-- Título: Usos -->
         <TextView
@@ -68,8 +66,7 @@
             android:text="Usos"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp" />
 
         <!-- Contenedor para los usos -->
         <TextView
@@ -77,14 +74,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:layout_marginBottom="8dp"
             android:padding="12dp"
-            android:background="@drawable/rounded_border"/>
-
-        <!-- Espacio entre secciones -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="8dp"/>
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_border" />
 
         <!-- Título: Sintaxis -->
         <TextView
@@ -93,25 +85,25 @@
             android:text="Sintaxis"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp" />
 
-        <!-- Contenedor para la sintaxis dividida por lenguaje -->
+        <!-- Contenedor para sintaxis en lenguajes -->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="24dp">
 
-            <!-- Contenedor para C# -->
+            <!-- C# -->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="8dp"
-                android:background="@drawable/rounded_border">
+                android:background="@drawable/rounded_border"
+                android:layout_marginEnd="4dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -129,17 +121,17 @@
                     android:textSize="14sp"
                     android:padding="8dp"
                     android:background="@android:color/white"/>
-
             </LinearLayout>
 
-            <!-- Contenedor para Java -->
+            <!-- Java -->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="8dp"
-                android:background="@drawable/rounded_border">
+                android:background="@drawable/rounded_border"
+                android:layout_marginHorizontal="2dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -157,17 +149,17 @@
                     android:textSize="14sp"
                     android:padding="8dp"
                     android:background="@android:color/white"/>
-
             </LinearLayout>
 
-            <!-- Contenedor para Python -->
+            <!-- Python -->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="8dp"
-                android:background="@drawable/rounded_border">
+                android:background="@drawable/rounded_border"
+                android:layout_marginStart="4dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -185,7 +177,6 @@
                     android:textSize="14sp"
                     android:padding="8dp"
                     android:background="@android:color/white"/>
-
             </LinearLayout>
 
         </LinearLayout>

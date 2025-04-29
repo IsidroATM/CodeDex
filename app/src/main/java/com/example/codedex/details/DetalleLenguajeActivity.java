@@ -2,6 +2,7 @@ package com.example.codedex.details;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,8 @@ public class DetalleLenguajeActivity extends AppCompatActivity {
     private TextView textTitulo, textDescripcion, textFundador, textAnio, textProyectos, textIDES;
     private LinearLayout containerDetalle;
 
+    private ScrollView scrollDetalle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +24,7 @@ public class DetalleLenguajeActivity extends AppCompatActivity {
 
         LenguajeProgramacion lenguaje = (LenguajeProgramacion) getIntent().getSerializableExtra("lenguaje");
 
+        scrollDetalle = findViewById(R.id.scrollDetalleLenguaje); // nuevo
         textTitulo = findViewById(R.id.textTituloDetalle);
         textDescripcion = findViewById(R.id.textDescripcionLenguaje);
         textFundador = findViewById(R.id.textFundadorLenguaje);
@@ -37,9 +41,9 @@ public class DetalleLenguajeActivity extends AppCompatActivity {
         textIDES.setText("IDEs compatibles:\n" + String.join(", ", lenguaje.getIdes()));
 
         try {
-            containerDetalle.setBackgroundColor(android.graphics.Color.parseColor(lenguaje.getColorHex()));
+            scrollDetalle.setBackgroundColor(android.graphics.Color.parseColor(lenguaje.getColorHex()));
         } catch (Exception e) {
-            containerDetalle.setBackgroundColor(android.graphics.Color.LTGRAY);
+            scrollDetalle.setBackgroundColor(android.graphics.Color.LTGRAY);
         }
     }
 }

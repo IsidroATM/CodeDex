@@ -177,10 +177,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 loadFragment(new StateFragment());
             } else if (id == R.id.nav_about) {
                 loadFragment(new AboutFragment());
-            } else if (id == R.id.nav_algoritmos) {
-                loadFragment(new AlgoritmosFragment());
-            } else if (id == R.id.nav_lenguajes) {
-                loadFragment(new LenguajesFragment());
             } else if (id == R.id.nav_logout) {
                 performLogout();
             }
