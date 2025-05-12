@@ -13,17 +13,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import com.example.codedex.R;
 import com.example.codedex.adapters.AlgoritmoAdapter;
 import com.example.codedex.models.Algoritmo;
-import com.example.codedex.services.ApiClient;
-import com.example.codedex.services.ApiService;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+//Unused
+//import retrofit2.Call;
+//import retrofit2.Callback;
+//import retrofit2.Response;
+//import com.example.codedex.services.ApiClient;
+//import com.example.codedex.services.ApiService;
 
 public class AlgoritmosFragment extends Fragment {
 
@@ -55,26 +63,32 @@ public class AlgoritmosFragment extends Fragment {
     }
 
     private void cargarDatos() {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        apiService.getAlgoritmos().enqueue(new Callback<List<Algoritmo>>() {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("algoritmos");
+
+        swipeRefreshLayout.setRefreshing(true);
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onResponse(Call<List<Algoritmo>> call, Response<List<Algoritmo>> response) {
-                if (response.isSuccessful()) {
-                    List<Algoritmo> lista = response.body();
-                    adapter = new AlgoritmoAdapter(getContext(), lista);
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    Toast.makeText(getContext(), "Error en la respuesta", Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Algoritmo> listaAlgoritmos = new ArrayList<>();
+
+                for (DataSnapshot algoritmoSnapshot : snapshot.getChildren()) {
+                    Algoritmo algoritmo = algoritmoSnapshot.getValue(Algoritmo.class);
+                    listaAlgoritmos.add(algoritmo);
                 }
-                swipeRefreshLayout.setRefreshing(false); // Dejar de mostrar el indicador de carga
+
+                adapter = new AlgoritmoAdapter(getContext(), listaAlgoritmos);
+                recyclerView.setAdapter(adapter);
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
-            public void onFailure(Call<List<Algoritmo>> call, Throwable t) {
-                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                swipeRefreshLayout.setRefreshing(false); // Dejar de mostrar el indicador de carga en caso de error
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Error al cargar desde Firebase", Toast.LENGTH_SHORT).show();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
+
 }
 

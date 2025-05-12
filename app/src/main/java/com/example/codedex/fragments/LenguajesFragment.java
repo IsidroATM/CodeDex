@@ -13,17 +13,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import com.example.codedex.R;
 import com.example.codedex.adapters.LenguajeAdapter;
 import com.example.codedex.models.LenguajeProgramacion;
-import com.example.codedex.services.ApiClient;
-import com.example.codedex.services.ApiService;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+//Unused
+//import com.example.codedex.services.ApiClient;
+//import com.example.codedex.services.ApiService;
+//import retrofit2.Call;
+//import retrofit2.Callback;
+//import retrofit2.Response;
 
 public class LenguajesFragment extends Fragment {
 
@@ -45,35 +53,41 @@ public class LenguajesFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                cargarDatos(); // Recargar los datos al deslizar
+                cargarDatos();
             }
         });
 
-        cargarDatos(); // Cargar los datos inicialmente
+        cargarDatos();
 
         return view;
     }
 
     private void cargarDatos() {
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        apiService.getLenguajes().enqueue(new Callback<List<LenguajeProgramacion>>() {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("lenguajes");
+
+        swipeRefreshLayout.setRefreshing(true);
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onResponse(Call<List<LenguajeProgramacion>> call, Response<List<LenguajeProgramacion>> response) {
-                if (response.isSuccessful()) {
-                    List<LenguajeProgramacion> lista = response.body();
-                    adapter = new LenguajeAdapter(getContext(), lista);
-                    recyclerView.setAdapter(adapter);
-                } else {
-                    Toast.makeText(getContext(), "Error en la respuesta", Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<LenguajeProgramacion> lista = new ArrayList<>();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    LenguajeProgramacion lenguaje = dataSnapshot.getValue(LenguajeProgramacion.class);
+                    lista.add(lenguaje);
                 }
-                swipeRefreshLayout.setRefreshing(false); // Dejar de mostrar el indicador de carga
+
+                adapter = new LenguajeAdapter(getContext(), lista);
+                recyclerView.setAdapter(adapter);
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
-            public void onFailure(Call<List<LenguajeProgramacion>> call, Throwable t) {
-                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                swipeRefreshLayout.setRefreshing(false); // Dejar de mostrar el indicador de carga en caso de error
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), "Error al cargar desde Firebase", Toast.LENGTH_SHORT).show();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
+
 }

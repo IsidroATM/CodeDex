@@ -7,6 +7,8 @@ public class Sintaxis implements Serializable {
     private String java;
     private String python;
 
+    public Sintaxis() {}
+
     public String getCsharp() { return csharp; }
     public String getJava() { return java; }
     public String getPython() { return python; }

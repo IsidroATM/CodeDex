@@ -11,6 +11,8 @@ public class Algoritmo implements Serializable {
     private String proyectosUso;
     private Sintaxis sintaxis;
 
+    public Algoritmo() {}
+
     // Getters y Setters
     public int getId() {
         return id;
