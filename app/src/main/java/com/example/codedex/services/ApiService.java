@@ -13,7 +13,6 @@ public interface ApiService {
     @GET("algoritmos")
     Call<List<Algoritmo>> getAlgoritmos();
 
-
     @GET("lenguajesDeProgramacion")
     Call<List<LenguajeProgramacion>> getLenguajes();
 }

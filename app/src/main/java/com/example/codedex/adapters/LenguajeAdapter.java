@@ -75,7 +75,7 @@ public class LenguajeAdapter extends RecyclerView.Adapter<LenguajeAdapter.ViewHo
             super(itemView);
             nombre = itemView.findViewById(R.id.textNombreLenguaje);
             abreviacion = itemView.findViewById(R.id.textAbreviacionLenguaje);
-            cardView = (CardView) itemView; // Como item_lenguaje.xml ahora es un CardView de raíz
+            cardView = (CardView) itemView;
         }
     }
 }
