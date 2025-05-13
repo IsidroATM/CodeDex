@@ -11,7 +11,6 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/nav_home"
             android:title="Home"/>
-
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/nav_settings"

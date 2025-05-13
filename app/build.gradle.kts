@@ -49,6 +49,7 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.13.1")
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation(libs.recyclerview)
+    implementation(libs.firebase.database)
     //
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

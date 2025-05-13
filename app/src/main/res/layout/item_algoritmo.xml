@@ -1,31 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    card_view:cardCornerRadius="12dp">
+    app:cardCornerRadius="24dp"
+    app:cardElevation="6dp"
+    android:backgroundTint="#E0F2F1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tvNombre"
-            android:layout_width="wrap_content"
+        <!-- Sección izquierda -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvComplejidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"/>
+            <!-- Nombre del algoritmo -->
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bubble Sort"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#004D40"
+                android:layout_marginTop="4dp"/>
 
+           <!-- Chips de categoría -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tvComplejidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Complejidad: O(n)"
+                    android:padding="6dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/chip_bg"
+                    android:textColor="#ffffff"
+                    android:layout_marginEnd="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iconoAlgoritmo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/circle_background"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_algoritmo"/>
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
