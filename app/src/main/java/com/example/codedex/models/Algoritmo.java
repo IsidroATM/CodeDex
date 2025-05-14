@@ -69,4 +69,5 @@ public class Algoritmo implements Serializable {
     public void setSintaxis(Sintaxis sintaxis) {
         this.sintaxis = sintaxis;
     }
+
 }

@@ -5,158 +5,205 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="@color/mi_color_fondo"
     tools:context=".fragments.HomeFragment">
 
-    <!-- Título de la app -->
-<TextView
-android:id="@+id/textAppTitle"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="CodeDex"
-android:textSize="32sp"
-android:textStyle="bold"
-android:textColor="#FFFFFF"
-android:layout_marginTop="50dp"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Descripción breve sobre la app -->
-<TextView
-android:id="@+id/textDescription"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:text="CodeDex es tu aplicación para explorar lenguajes de programación y aprender sobre sus características."
-android:textSize="16sp"
-android:textColor="#CCCCCC"
-android:gravity="center"
-android:layout_marginTop="16dp"
-android:layout_marginStart="16dp"
-android:layout_marginEnd="16dp"
-app:layout_constraintTop_toBottomOf="@id/textAppTitle"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Contenedor para mostrar qué hace la app -->
-<LinearLayout
-android:id="@+id/containerWhatItDoes"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:padding="20dp"
-android:background="@drawable/card_background"
-android:elevation="8dp"
-android:layout_marginTop="30dp"
-app:layout_constraintTop_toBottomOf="@id/textDescription"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent">
-
-    <ImageView
-        android:id="@+id/ic_idea"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_explore" />
-
-
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_weight="1">
-
-    <TextView
+    <!-- Logo de la app con estilo moderno -->
+    <LinearLayout
+        android:id="@+id/logoContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿Qué hace CodeDex?"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="code"
+            android:textColor="#6366f1"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dex"
+            android:textColor="#10b981"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Descripción principal -->
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tu guía interactiva para explorar lenguajes de programación y algoritmos"
         android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="#CCCCCC"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="40dp"
+        app:layout_constraintTop_toBottomOf="@id/logoContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Tarjeta: Qué hace la app -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerWhatItDoes"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Explora lenguajes de programación, descubre detalles, y aprende sobre su uso en proyectos reales."
-        android:textColor="#CCCCCC"/>
-</LinearLayout>
-</LinearLayout>
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#1E1E1E"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/textDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Contenedor para mostrar la utilidad de la app -->
-<LinearLayout
-android:id="@+id/containerWhatItIsFor"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:padding="20dp"
-android:background="@drawable/card_background"
-android:elevation="8dp"
-android:layout_marginTop="20dp"
-app:layout_constraintTop_toBottomOf="@id/containerWhatItDoes"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/mi_color_fondo"
+            android:padding="20dp">
 
-    <ImageView
-        android:id="@+id/ic_idea"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_idea" />
+            <ImageView
+                android:id="@+id/ic_explore"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_explore"
+                android:tint="#6366f1"
+                android:layout_marginEnd="16dp"
+                tools:ignore="UseAppTint" />
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
 
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿Qué hace CodeDex?"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Explora lenguajes de programación, descubre sus características principales y aprende con ejemplos prácticos."
+                    android:textColor="#CCCCCC"
+                    android:lineSpacingExtra="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Tarjeta: Para qué sirve -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerWhatItIsFor"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="¿Para qué sirve?"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#1E1E1E"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/containerWhatItDoes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mi_color_fondo"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/ic_idea"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_idea"
+                android:tint="#10b981"
+                android:layout_marginEnd="16dp"
+                tools:ignore="UseAppTint" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿Para qué sirve?"
+                    android:textSize="18sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ideal para desarrolladores que quieran aprender sobre nuevos lenguajes, algoritmos y mejorar sus habilidades de programación."
+                    android:textColor="#CCCCCC"
+                    android:lineSpacingExtra="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botones de acción -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Ideal para desarrolladores curiosos que quieran aprender sobre nuevos lenguajes y herramientas modernas."
-        android:textColor="#CCCCCC"/>
-</LinearLayout>
-</LinearLayout>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/containerWhatItIsFor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Botones de navegación -->
-<LinearLayout
-android:id="@+id/buttonContainer"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:gravity="center"
-android:layout_marginTop="30dp"
-android:layout_marginBottom="30dp"
-app:layout_constraintTop_toBottomOf="@id/containerWhatItIsFor"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent">
+        <Button
+            android:id="@+id/btnAlgoritmos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ver Algoritmos"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#10b981"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="12dp"
+            android:elevation="4dp"/>
 
-<Button
-    android:id="@+id/btnAlgoritmos"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Ver Algoritmos"
-    android:backgroundTint="@color/colorAccent"
-    android:textColor="#FFFFFF"
-    android:textStyle="bold"
-    android:layout_marginEnd="16dp"/>
+        <Button
+            android:id="@+id/btnLenguajes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ver Lenguajes"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#6366f1"
+            android:layout_marginStart="8dp"
+            android:paddingVertical="12dp"
+            android:elevation="4dp"/>
+    </LinearLayout>
 
-<Button
-    android:id="@+id/btnLenguajes"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Ver Lenguajes"
-    android:backgroundTint="@color/colorPrimary"
-    android:textColor="#FFFFFF"
-    android:textStyle="bold"/>
-</LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
