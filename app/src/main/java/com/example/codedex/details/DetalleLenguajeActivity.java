@@ -14,8 +14,8 @@ public class DetalleLenguajeActivity extends AppCompatActivity {
 
     private TextView textTitulo, textDescripcion, textFundador, textAnio, textProyectos, textIDES;
     private LinearLayout containerDetalle;
-
     private ScrollView scrollDetalle;
+    private LinearLayout containerIDES;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class DetalleLenguajeActivity extends AppCompatActivity {
         textFundador = findViewById(R.id.textFundadorLenguaje);
         textAnio = findViewById(R.id.textAnioLenguaje);
         textProyectos = findViewById(R.id.textProyectosLenguaje);
-        textIDES = findViewById(R.id.textIDESLenguaje);
+        containerIDES = findViewById(R.id.containerIDES);
         containerDetalle = findViewById(R.id.containerDetalleLenguaje);
 
         textTitulo.setText(lenguaje.getNombre());
@@ -38,7 +38,28 @@ public class DetalleLenguajeActivity extends AppCompatActivity {
         textFundador.setText("Fundador: " + lenguaje.getFundador());
         textAnio.setText("Año de creación: " + lenguaje.getACreacion());
         textProyectos.setText("Proyectos:\n" + String.join(", ", lenguaje.getProyectosUsados()));
-        textIDES.setText("IDEs compatibles:\n" + String.join(", ", lenguaje.getIdes()));
+        for (String ide : lenguaje.getIdes()) {
+            LinearLayout card = new LinearLayout(this);
+            card.setOrientation(LinearLayout.VERTICAL);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(0, 0, 0, 24); // margen inferior entre tarjetas
+            card.setLayoutParams(params);
+            card.setPadding(24, 24, 24, 24);
+            card.setBackgroundResource(R.drawable.cmd_background); // usa un drawable como fondo
+
+            TextView nombreIDE = new TextView(this);
+            nombreIDE.setText(ide);
+            nombreIDE.setTextSize(16f);
+            nombreIDE.setTextColor(android.graphics.Color.WHITE);
+            nombreIDE.setTypeface(null, android.graphics.Typeface.BOLD);
+
+            card.addView(nombreIDE);
+            containerIDES.addView(card);
+        }
+
 
         try {
             scrollDetalle.setBackgroundColor(android.graphics.Color.parseColor(lenguaje.getColorHex()));

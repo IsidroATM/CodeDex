@@ -26,7 +26,7 @@
             android:theme="@style/Theme.CodeDex.NoActionBar" />
         <activity
             android:name=".fragments.AlgoritmosFragment"
-            android:exported="false" /> <!-- Actividad Splash/Inicio -->
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

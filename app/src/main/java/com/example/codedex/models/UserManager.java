@@ -47,11 +47,11 @@ public class UserManager {
         return loggedIn;
     }
     public void saveLoginState(Context context, boolean isLoggedIn, String email) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean(KEY_LOGGED_IN, isLoggedIn);
-        editor.putString(KEY_EMAIL, email);
-        editor.commit(); // Usamos commit() para escritura inmediata
+        SharedPreferences preferences = context.getSharedPreferences("com.example.codedex", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("AUTH_OK", isLoggedIn);
+        editor.putString("USER_EMAIL", email);
+        editor.apply(); // Usamos commit() para escritura inmediata
 
         Log.d("UserManager", "Estado guardado - Login: " + isLoggedIn + ", Email: " + email);
     }
