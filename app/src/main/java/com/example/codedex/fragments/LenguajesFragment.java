@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +39,8 @@ public class LenguajesFragment extends Fragment {
     private RecyclerView recyclerView;
     private LenguajeAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private List<LenguajeProgramacion> listaCompleta = new ArrayList<>();
+    private SearchView searchView;
 
     @Nullable
     @Override
@@ -57,6 +60,20 @@ public class LenguajesFragment extends Fragment {
             }
         });
 
+        searchView = view.findViewById(R.id.searchViewLenguajes);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filtrarLista(newText);
+                return true;
+            }
+        });
+
         cargarDatos();
 
         return view;
@@ -70,15 +87,21 @@ public class LenguajesFragment extends Fragment {
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<LenguajeProgramacion> lista = new ArrayList<>();
+                listaCompleta.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     LenguajeProgramacion lenguaje = dataSnapshot.getValue(LenguajeProgramacion.class);
-                    lista.add(lenguaje);
+                    listaCompleta.add(lenguaje);
                 }
 
-                adapter = new LenguajeAdapter(getContext(), lista);
-                recyclerView.setAdapter(adapter);
+                String textoBusqueda = searchView.getQuery().toString();
+                if (!textoBusqueda.isEmpty()) {
+                    filtrarLista(textoBusqueda);
+                } else {
+                    adapter = new LenguajeAdapter(getContext(), listaCompleta);
+                    recyclerView.setAdapter(adapter);
+                }
+
                 swipeRefreshLayout.setRefreshing(false);
             }
 
@@ -90,4 +113,14 @@ public class LenguajesFragment extends Fragment {
         });
     }
 
+    private void filtrarLista(String texto) {
+        List<LenguajeProgramacion> listaFiltrada = new ArrayList<>();
+        for (LenguajeProgramacion lenguaje : listaCompleta) {
+            if (lenguaje.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+                listaFiltrada.add(lenguaje);
+            }
+        }
+        adapter = new LenguajeAdapter(getContext(), listaFiltrada);
+        recyclerView.setAdapter(adapter);
+    }
 }

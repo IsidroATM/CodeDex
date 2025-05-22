@@ -37,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        SharedPreferences preferences = getSharedPreferences("com.example.codedex", MODE_PRIVATE);
-        boolean isAuthenticated = preferences.getBoolean("AUTH_OK", false);
+        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        boolean isAuthenticated = preferences.getBoolean("isLoggedIn", false);
+
 
         new Handler().postDelayed(() -> {
             if (isAuthenticated) {

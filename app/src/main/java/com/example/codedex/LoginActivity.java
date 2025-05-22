@@ -7,7 +7,6 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText emailTextView, passwordTextView;
     private Button btnLogin, btnRegister;
     private UserManager userManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Inicialización
         userManager = UserManager.getInstance();
+        userManager.init(this); // Cargar usuarios registrados
         initViews();
         setupListeners();
     }

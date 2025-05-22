@@ -48,7 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
         String email = emailTextView.getText().toString().trim();
         String password = passwordTextView.getText().toString().trim();
 
-        // Validaciones
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Por favor ingrese un email", Toast.LENGTH_SHORT).show();
             return;
@@ -64,8 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // Registrar usuario
-        boolean registrationSuccess = UserManager.getInstance().registerUser(email, password);
+        boolean registrationSuccess = UserManager.getInstance().registerUser(email, password, this);
 
         if (registrationSuccess) {
             Toast.makeText(this, "Registro exitoso!", Toast.LENGTH_SHORT).show();
@@ -74,4 +72,5 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
