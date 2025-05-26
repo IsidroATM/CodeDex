@@ -2,11 +2,16 @@ package com.example.codedex.lists;
 
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -21,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends Fragment {
 
     private RecyclerView recyclerView;
     private ListaAdapter adapter;
@@ -29,20 +34,19 @@ public class ListActivity extends AppCompatActivity {
     private FloatingActionButton btnAgregarLista;
     private AppDatabase db;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_list, container, false);
 
         // Inicializar Room DB
-        db = Room.databaseBuilder(getApplicationContext(),
-                        AppDatabase.class, "codedex-db")
-                .allowMainThreadQueries() // Para pruebas simples
+        db = Room.databaseBuilder(requireContext(), AppDatabase.class, "codedex-db")
+                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
 
         listas = new ArrayList<>(db.listaDao().obtenerListas());
-        Toast.makeText(this, "Listas cargadas: " + listas.size(), Toast.LENGTH_SHORT).show();
 
         // Añadir "Favoritos" si no existe
         boolean favoritosExiste = false;
@@ -58,21 +62,23 @@ public class ListActivity extends AppCompatActivity {
             db.listaDao().insertarLista(favoritos);
         }
 
-        recyclerView = findViewById(R.id.recyclerListas);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = view.findViewById(R.id.recyclerListas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new ListaAdapter(this, listas);
+        adapter = new ListaAdapter(getContext(), listas);
         recyclerView.setAdapter(adapter);
 
-        btnAgregarLista = findViewById(R.id.btnAgregarLista);
+        btnAgregarLista = view.findViewById(R.id.btnAgregarLista);
         btnAgregarLista.setOnClickListener(v -> mostrarDialogoNuevaLista());
+
+        return view;
     }
 
     private void mostrarDialogoNuevaLista() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Nombre de la nueva lista");
 
-        final EditText input = new EditText(this);
+        final EditText input = new EditText(requireContext());
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
@@ -84,7 +90,7 @@ public class ListActivity extends AppCompatActivity {
                 db.listaDao().insertarLista(nuevaLista);
                 adapter.notifyItemInserted(listas.size() - 1);
             } else {
-                Toast.makeText(this, "Nombre inválido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Nombre inválido", Toast.LENGTH_SHORT).show();
             }
         });
 

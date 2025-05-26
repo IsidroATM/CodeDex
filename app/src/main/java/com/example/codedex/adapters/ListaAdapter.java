@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codedex.R;
-import com.example.codedex.lists.ContenidoListaActivity;
+import com.example.codedex.lists.ContenidoListaFragment;
 import com.example.codedex.models.ListaPersonalizada;
 
 import java.util.List;
@@ -44,9 +46,13 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder> 
         }
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ContenidoListaActivity.class);
-            intent.putExtra("lista", lista);
-            context.startActivity(intent);
+            ContenidoListaFragment fragment = ContenidoListaFragment.newInstance(lista);
+            ((FragmentActivity) context).getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
         });
     }
 

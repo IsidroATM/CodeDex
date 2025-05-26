@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
-            android:name=".lists.ContenidoListaActivity"
+            android:name=".lists.ContenidoListaFragment"
             android:exported="false"
             android:theme="@style/Theme.CodeDex.NoActionBar"/>
         <activity

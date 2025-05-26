@@ -175,8 +175,9 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
             } else if (id == R.id.nav_about) {
                 loadFragment(new AboutFragment());
             } else if (id == R.id.nav_list) {
-                Intent intent = new Intent(this, ListActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(this, ListActivity.class);
+//                startActivity(intent);
+                loadFragment(new ListActivity());
 
             }else if (id == R.id.nav_logout) {
                 performLogout();
