@@ -99,7 +99,7 @@
             android:id="@+id/btnAgregarALista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar a favoritos"
+            android:text="Agregar a lista"
             android:layout_margin="16dp"
             android:backgroundTint="@color/purple_500"
             android:textColor="@android:color/white"/>

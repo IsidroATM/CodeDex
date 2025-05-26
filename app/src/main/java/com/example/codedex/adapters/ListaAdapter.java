@@ -12,7 +12,6 @@ import com.example.codedex.R;
 import com.example.codedex.lists.ContenidoListaActivity;
 import com.example.codedex.models.ListaPersonalizada;
 
-
 import java.util.List;
 
 public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder> {
@@ -36,6 +35,14 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder> 
         ListaPersonalizada lista = listas.get(position);
         holder.nombreLista.setText(lista.getNombre());
 
+        // Nueva funcionalidad visual: mostrar cantidad si existe
+        if (lista.getAlgoritmos() != null) {
+            int cantidad = lista.getAlgoritmos().size();
+            holder.cantidadAlgoritmos.setText(cantidad + " algoritmos");
+        } else {
+            holder.cantidadAlgoritmos.setText("0 algoritmos");
+        }
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ContenidoListaActivity.class);
             intent.putExtra("lista", lista);
@@ -50,10 +57,12 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nombreLista;
+        public TextView cantidadAlgoritmos; // ← NUEVA línea
 
         public ViewHolder(View itemView) {
             super(itemView);
             nombreLista = itemView.findViewById(R.id.tvNombreLista);
+            cantidadAlgoritmos = itemView.findViewById(R.id.tvCantidadAlgoritmos); // ← NUEVA línea
         }
     }
 }
