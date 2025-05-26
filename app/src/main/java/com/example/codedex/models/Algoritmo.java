@@ -14,60 +14,25 @@ public class Algoritmo implements Serializable {
     public Algoritmo() {}
 
     // Getters y Setters
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getComplejidad() { return complejidad; }
+    public void setComplejidad(String complejidad) { this.complejidad = complejidad; }
 
-    public String getComplejidad() {
-        return complejidad;
-    }
+    public String getProyectosUso() { return proyectosUso; }
+    public void setProyectosUso(String proyectosUso) { this.proyectosUso = proyectosUso; }
 
-    public void setComplejidad(String complejidad) {
-        this.complejidad = complejidad;
-    }
+    public String getColorFondo() { return colorFondo; }
+    public void setColorFondo(String colorFondo) { this.colorFondo = colorFondo; }
 
-    public String getColorFondo() {
-        return colorFondo;
-    }
-
-    public void setColorFondo(String colorFondo) {
-        this.colorFondo = colorFondo;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getProyectosUso() {
-        return proyectosUso;
-    }
-
-    public void setProyectosUso(String proyectosUso) {
-        this.proyectosUso = proyectosUso;
-    }
-
-    public Sintaxis getSintaxis() {
-        return sintaxis;
-    }
-
-    public void setSintaxis(Sintaxis sintaxis) {
-        this.sintaxis = sintaxis;
-    }
+    public Sintaxis getSintaxis() { return sintaxis; }
+    public void setSintaxis(Sintaxis sintaxis) { this.sintaxis = sintaxis; }
 
 }
