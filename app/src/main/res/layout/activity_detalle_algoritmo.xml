@@ -87,108 +87,21 @@
             android:textStyle="bold"
             android:layout_marginBottom="12dp" />
 
-        <!-- Contenedor para sintaxis en lenguajes -->
-        <!-- Contenedor para sintaxis con estilo consola -->
+        <!-- Contenedor para sintaxis dinámicas -->
         <LinearLayout
+            android:id="@+id/contenedorSintaxisDinamico"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:divider="?android:attr/dividerHorizontal"
-            android:showDividers="middle"
-            android:dividerPadding="8dp">
+            android:layout_marginBottom="24dp" />
 
-            <!-- C# -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="#FF1E1E1E"
-                android:layout_marginBottom="12dp"
-                android:elevation="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="C#"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#00FF00"
-                    android:gravity="center"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:id="@+id/tvCsharp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:padding="12dp"
-                    android:background="#FF000000"
-                    android:fontFamily="monospace"/>
-            </LinearLayout>
-
-            <!-- Java -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="#FF1E1E1E"
-                android:layout_marginBottom="12dp"
-                android:elevation="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Java"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#00FF00"
-                    android:gravity="center"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:id="@+id/tvJava"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:padding="12dp"
-                    android:background="#FF000000"
-                    android:fontFamily="monospace"/>
-            </LinearLayout>
-
-            <!-- Python -->
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:background="#FF1E1E1E"
-                android:elevation="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Python"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#00FF00"
-                    android:gravity="center"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:id="@+id/tvPython"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:padding="12dp"
-                    android:background="#FF000000"
-                    android:fontFamily="monospace"/>
-            </LinearLayout>
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnAgregarALista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar a favoritos"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@android:color/white"/>
     </LinearLayout>
 </ScrollView>

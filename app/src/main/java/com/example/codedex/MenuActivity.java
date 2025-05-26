@@ -1,11 +1,9 @@
 package com.example.codedex;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,11 +15,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.codedex.fragments.AboutFragment;
-import com.example.codedex.fragments.AlgoritmosFragment;
 import com.example.codedex.fragments.HomeFragment;
-import com.example.codedex.fragments.LenguajesFragment;
 import com.example.codedex.fragments.SettingsFragment;
 import com.example.codedex.fragments.StateFragment;
+import com.example.codedex.lists.ListActivity;
 import com.example.codedex.models.UserManager;
 import com.google.android.material.navigation.NavigationView;
 
@@ -177,7 +174,11 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 loadFragment(new StateFragment());
             } else if (id == R.id.nav_about) {
                 loadFragment(new AboutFragment());
-            } else if (id == R.id.nav_logout) {
+            } else if (id == R.id.nav_list) {
+                Intent intent = new Intent(this, ListActivity.class);
+                startActivity(intent);
+
+            }else if (id == R.id.nav_logout) {
                 performLogout();
             }
 

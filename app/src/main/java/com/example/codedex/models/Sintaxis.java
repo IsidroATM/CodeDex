@@ -1,16 +1,28 @@
 package com.example.codedex.models;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sintaxis implements Serializable {
-    private String csharp;
-    private String java;
-    private String python;
+    private Map<String, String> codigoPorLenguaje;
 
-    public Sintaxis() {}
+    public Sintaxis() {
+        this.codigoPorLenguaje = new HashMap<>();
+    }
 
-    public String getCsharp() { return csharp; }
-    public String getJava() { return java; }
-    public String getPython() { return python; }
+    public void agregarCodigo(String lenguaje, String codigo) {
+        if (codigo != null && !codigo.trim().isEmpty()) {
+            codigoPorLenguaje.put(lenguaje, codigo);
+        }
+    }
 
+    public Map<String, String> getCodigoPorLenguaje() {
+        return codigoPorLenguaje;
+    }
+
+    public boolean tieneLenguajes() {
+        return !codigoPorLenguaje.isEmpty();
+    }
 }
+
