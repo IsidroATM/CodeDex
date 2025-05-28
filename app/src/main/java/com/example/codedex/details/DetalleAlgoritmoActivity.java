@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amrdeveloper.codeview.CodeView;
 import com.example.codedex.R;
 import com.example.codedex.database.AppDatabase;
 import com.example.codedex.models.Algoritmo;
@@ -62,27 +63,44 @@ public class DetalleAlgoritmoActivity extends AppCompatActivity {
             if (algoritmo.getSintaxis() != null && algoritmo.getSintaxis().tieneLenguajes()) {
                 Map<String, String> codigos = algoritmo.getSintaxis().getCodigoPorLenguaje();
 
-                for (Map.Entry<String, String> entrada : codigos.entrySet()) {
-                    String lenguaje = entrada.getKey();
-                    String codigo = entrada.getValue();
+                contenedorSintaxisDinamico.removeAllViews(); // Limpia por si acaso
 
-                    // Crear y configurar TextView para título del lenguaje
-                    TextView tvTitulo = new TextView(this);
-                    tvTitulo.setText(capitalizeFirstLetter(lenguaje));
-                    tvTitulo.setTextSize(18);
-                    tvTitulo.setTypeface(Typeface.DEFAULT_BOLD);
-                    tvTitulo.setPadding(0, 16, 0, 4);
-                    contenedorSintaxisDinamico.addView(tvTitulo);
+                for (Map.Entry<String, String> entry : codigos.entrySet()) {
+                    String lenguaje = entry.getKey();
+                    String codigo = entry.getValue();
 
-                    // Crear y configurar TextView para el código fuente
-                    TextView tvCodigo = new TextView(this);
-                    tvCodigo.setText(codigo);
-                    tvCodigo.setTypeface(Typeface.MONOSPACE);
-                    tvCodigo.setPadding(16, 8, 16, 16);
-                    tvCodigo.setBackgroundColor(Color.parseColor("#f4f4f4"));
-                    tvCodigo.setTextColor(Color.BLACK);
-                    tvCodigo.setTextSize(14);
-                    contenedorSintaxisDinamico.addView(tvCodigo);
+                    TextView tituloLenguaje = new TextView(this);
+                    tituloLenguaje.setText(lenguaje);
+                    tituloLenguaje.setTextColor(Color.BLACK);
+                    tituloLenguaje.setTypeface(null, Typeface.BOLD);
+                    tituloLenguaje.setTextSize(16);
+                    tituloLenguaje.setPadding(0, 16, 0, 8);
+
+                    CodeView codeView = new CodeView(this);
+                    codeView.setLayoutParams(new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT));
+                    codeView.setBackgroundColor(Color.parseColor("#1e1e1e"));
+                    codeView.setTextColor(Color.parseColor("#d4d4d4"));
+                    codeView.setTypeface(Typeface.MONOSPACE);
+                    codeView.setTextSize(14);
+                    codeView.setPadding(16, 16, 16, 16);
+                    codeView.setHorizontallyScrolling(true);
+                    codeView.setMaxLines(Integer.MAX_VALUE);
+
+                    // Evitar edición
+                    codeView.setFocusable(false);
+                    codeView.setFocusableInTouchMode(false);
+                    codeView.setCursorVisible(false);
+                    codeView.setLongClickable(false);
+                    codeView.setKeyListener(null);
+
+                    // Asegurar saltos de línea reales
+                    String codigoConSaltos = codigo.replace("\\n", "\n");
+                    codeView.setText(codigoConSaltos);
+
+                    contenedorSintaxisDinamico.addView(tituloLenguaje);
+                    contenedorSintaxisDinamico.addView(codeView);
                 }
             } else {
                 contenedorSintaxisDinamico.setVisibility(View.GONE);

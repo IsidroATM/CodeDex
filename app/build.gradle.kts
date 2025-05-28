@@ -57,4 +57,7 @@ dependencies {
     // room
     implementation("androidx.room:room-runtime:2.7.1")
     annotationProcessor("androidx.room:room-compiler:2.7.1")
+    //View
+    implementation("com.github.amrdeveloper:codeview:1.3.2")
+
 }
