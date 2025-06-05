@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,8 +42,10 @@ public class AlgoritmosFragment extends Fragment {
     private RecyclerView recyclerView;
     private AlgoritmoAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private Spinner spinnerFiltro;
     private List<Algoritmo> listaCompleta = new ArrayList<>(); // Lista completa
     private SearchView searchView;
+    private String tipoSeleccionado = "All";
 
     @Nullable
     @Override
@@ -48,35 +53,77 @@ public class AlgoritmosFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_algoritmos_fragment, container, false);
 
+        // Referencias
+        ImageView iconoBusqueda = view.findViewById(R.id.iconoBusqueda);
+        ImageView iconoFiltro = view.findViewById(R.id.iconoFiltro);
+        searchView = view.findViewById(R.id.searchView);
+        spinnerFiltro = view.findViewById(R.id.spinnerFiltro);
+
         recyclerView = view.findViewById(R.id.recyclerAlgoritmos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
 
-        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout); // Inicializa el SwipeRefreshLayout
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        // Mostrar SearchView y ocultar Spinner si está visible
+        iconoBusqueda.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
-                cargarDatos(); // Recargar los datos al deslizar
+            public void onClick(View v) {
+                if (searchView.getVisibility() == View.GONE) {
+                    searchView.setVisibility(View.VISIBLE);
+                    spinnerFiltro.setVisibility(View.GONE);
+                } else {
+                    searchView.setVisibility(View.GONE);
+                }
             }
         });
 
-        searchView = view.findViewById(R.id.searchView);
+        // Mostrar Spinner y ocultar SearchView si está visible
+        iconoFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (spinnerFiltro.getVisibility() == View.GONE) {
+                    spinnerFiltro.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.GONE);
+                } else {
+                    spinnerFiltro.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        // Listeners
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                cargarDatos();
+            }
+        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false; // No hacemos nada en el submit
-            }
+            public boolean onQueryTextSubmit(String query) { return false; }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filtrarLista(newText);
+                filtrarLista(newText, tipoSeleccionado);
                 return true;
             }
         });
 
-        cargarDatos(); // Cargar los datos inicialmente
+        spinnerFiltro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                tipoSeleccionado = parent.getItemAtPosition(position).toString();
+                filtrarLista(searchView.getQuery().toString(), tipoSeleccionado);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        cargarDatos();
         return view;
     }
+
+
 
     private void cargarDatos() {
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("algoritmos");
@@ -90,15 +137,9 @@ public class AlgoritmosFragment extends Fragment {
                     Algoritmo algoritmo = algoritmoSnapshot.getValue(Algoritmo.class);
                     listaCompleta.add(algoritmo);
                 }
-
-                // Verificar si hay texto en el SearchView
+                //Busqueda(texto) y Filtro
                 String textoBusqueda = searchView.getQuery().toString();
-                if (!textoBusqueda.isEmpty()) {
-                    filtrarLista(textoBusqueda); // Aplica el filtro actual
-                } else {
-                    adapter = new AlgoritmoAdapter(getContext(), listaCompleta);
-                    recyclerView.setAdapter(adapter);
-                }
+                filtrarLista(textoBusqueda, tipoSeleccionado);
 
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -111,19 +152,17 @@ public class AlgoritmosFragment extends Fragment {
         });
     }
 
-
-
-    private void filtrarLista(String texto) {
+    private void filtrarLista(String textoBusqueda, String tipo) {
         List<Algoritmo> listaFiltrada = new ArrayList<>();
         for (Algoritmo algoritmo : listaCompleta) {
-            if (algoritmo.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+            boolean coincideTipo = tipo.equals("All") || (algoritmo.getTipo() != null && algoritmo.getTipo().equalsIgnoreCase(tipo));
+            boolean coincideBusqueda = algoritmo.getNombre().toLowerCase().contains(textoBusqueda.toLowerCase());
+            if (coincideTipo && coincideBusqueda) {
                 listaFiltrada.add(algoritmo);
             }
         }
         adapter = new AlgoritmoAdapter(getContext(), listaFiltrada);
         recyclerView.setAdapter(adapter);
     }
-
-
 }
 

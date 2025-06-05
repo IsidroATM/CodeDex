@@ -9,6 +9,7 @@ public class Algoritmo implements Serializable {
     private String colorFondo;
     private String descripcion;
     private String proyectosUso;
+    private String tipo;
     private Sintaxis sintaxis;
 
     public Algoritmo() {}
@@ -28,6 +29,9 @@ public class Algoritmo implements Serializable {
 
     public String getProyectosUso() { return proyectosUso; }
     public void setProyectosUso(String proyectosUso) { this.proyectosUso = proyectosUso; }
+
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
     public String getColorFondo() { return colorFondo; }
     public void setColorFondo(String colorFondo) { this.colorFondo = colorFondo; }
