@@ -3,4 +3,13 @@
     <string name="tv_bienvenida">Bienvenido</string>
     <string name="open_nav">Abrir menú</string>
     <string name="close_nav">Cerrar menú</string>
+
+    <string-array name="tipos_algoritmos">
+        <item>All</item>
+        <item>Sort</item>
+        <item>Search</item>
+        <item>Graph</item>
+<!--        <item>recursivity</item>-->
+<!--        <item>Greedy</item>-->
+    </string-array>
 </resources>

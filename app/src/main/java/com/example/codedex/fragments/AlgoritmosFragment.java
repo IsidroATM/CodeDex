@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,14 +41,18 @@ public class AlgoritmosFragment extends Fragment {
     private RecyclerView recyclerView;
     private AlgoritmoAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private Spinner spinnerFiltro;
     private List<Algoritmo> listaCompleta = new ArrayList<>(); // Lista completa
     private SearchView searchView;
+    private String tipoSeleccionado = "All";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_algoritmos_fragment, container, false);
+
+        spinnerFiltro = view.findViewById(R.id.spinnerFiltro);
 
         recyclerView = view.findViewById(R.id.recyclerAlgoritmos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -69,8 +75,22 @@ public class AlgoritmosFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filtrarLista(newText);
+                //filtrarLista(newText);
+                filtrarLista(newText, tipoSeleccionado);
                 return true;
+            }
+        });
+        // Configurar el Spinner
+        spinnerFiltro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                tipoSeleccionado = parent.getItemAtPosition(position).toString();
+                filtrarLista(searchView.getQuery().toString(), tipoSeleccionado);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Nada
             }
         });
 
@@ -90,15 +110,9 @@ public class AlgoritmosFragment extends Fragment {
                     Algoritmo algoritmo = algoritmoSnapshot.getValue(Algoritmo.class);
                     listaCompleta.add(algoritmo);
                 }
-
-                // Verificar si hay texto en el SearchView
+                //Busqueda(texto) y Filtro
                 String textoBusqueda = searchView.getQuery().toString();
-                if (!textoBusqueda.isEmpty()) {
-                    filtrarLista(textoBusqueda); // Aplica el filtro actual
-                } else {
-                    adapter = new AlgoritmoAdapter(getContext(), listaCompleta);
-                    recyclerView.setAdapter(adapter);
-                }
+                filtrarLista(textoBusqueda, tipoSeleccionado);
 
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -111,12 +125,12 @@ public class AlgoritmosFragment extends Fragment {
         });
     }
 
-
-
-    private void filtrarLista(String texto) {
+    private void filtrarLista(String textoBusqueda, String tipo) {
         List<Algoritmo> listaFiltrada = new ArrayList<>();
         for (Algoritmo algoritmo : listaCompleta) {
-            if (algoritmo.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+            boolean coincideTipo = tipo.equals("All") || (algoritmo.getTipo() != null && algoritmo.getTipo().equalsIgnoreCase(tipo));
+            boolean coincideBusqueda = algoritmo.getNombre().toLowerCase().contains(textoBusqueda.toLowerCase());
+            if (coincideTipo && coincideBusqueda) {
                 listaFiltrada.add(algoritmo);
             }
         }
@@ -124,6 +138,16 @@ public class AlgoritmosFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
+//    private void filtrarLista(String texto) {
+//        List<Algoritmo> listaFiltrada = new ArrayList<>();
+//        for (Algoritmo algoritmo : listaCompleta) {
+//            if (algoritmo.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+//                listaFiltrada.add(algoritmo);
+//            }
+//        }
+//        adapter = new AlgoritmoAdapter(getContext(), listaFiltrada);
+//        recyclerView.setAdapter(adapter);
+//    }
 
 }
 
