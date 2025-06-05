@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -52,35 +53,61 @@ public class AlgoritmosFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_algoritmos_fragment, container, false);
 
+        // Referencias
+        ImageView iconoBusqueda = view.findViewById(R.id.iconoBusqueda);
+        ImageView iconoFiltro = view.findViewById(R.id.iconoFiltro);
+        searchView = view.findViewById(R.id.searchView);
         spinnerFiltro = view.findViewById(R.id.spinnerFiltro);
 
         recyclerView = view.findViewById(R.id.recyclerAlgoritmos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
 
-        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout); // Inicializa el SwipeRefreshLayout
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        // Mostrar SearchView y ocultar Spinner si está visible
+        iconoBusqueda.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
-                cargarDatos(); // Recargar los datos al deslizar
+            public void onClick(View v) {
+                if (searchView.getVisibility() == View.GONE) {
+                    searchView.setVisibility(View.VISIBLE);
+                    spinnerFiltro.setVisibility(View.GONE);
+                } else {
+                    searchView.setVisibility(View.GONE);
+                }
             }
         });
 
-        searchView = view.findViewById(R.id.searchView);
+        // Mostrar Spinner y ocultar SearchView si está visible
+        iconoFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (spinnerFiltro.getVisibility() == View.GONE) {
+                    spinnerFiltro.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.GONE);
+                } else {
+                    spinnerFiltro.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        // Listeners
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                cargarDatos();
+            }
+        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false; // No hacemos nada en el submit
-            }
+            public boolean onQueryTextSubmit(String query) { return false; }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //filtrarLista(newText);
                 filtrarLista(newText, tipoSeleccionado);
                 return true;
             }
         });
-        // Configurar el Spinner
+
         spinnerFiltro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -89,14 +116,14 @@ public class AlgoritmosFragment extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Nada
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        cargarDatos(); // Cargar los datos inicialmente
+        cargarDatos();
         return view;
     }
+
+
 
     private void cargarDatos() {
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("algoritmos");
@@ -137,17 +164,5 @@ public class AlgoritmosFragment extends Fragment {
         adapter = new AlgoritmoAdapter(getContext(), listaFiltrada);
         recyclerView.setAdapter(adapter);
     }
-
-//    private void filtrarLista(String texto) {
-//        List<Algoritmo> listaFiltrada = new ArrayList<>();
-//        for (Algoritmo algoritmo : listaCompleta) {
-//            if (algoritmo.getNombre().toLowerCase().contains(texto.toLowerCase())) {
-//                listaFiltrada.add(algoritmo);
-//            }
-//        }
-//        adapter = new AlgoritmoAdapter(getContext(), listaFiltrada);
-//        recyclerView.setAdapter(adapter);
-//    }
-
 }
 

@@ -1,32 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutPrincipal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <!-- Contenedor superior para iconos -->
+    <RelativeLayout
+        android:id="@+id/headerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Buscar algoritmo..." />
+        android:padding="8dp">
 
+        <!-- Ícono de búsqueda -->
+        <ImageView
+            android:id="@+id/iconoBusqueda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_search"
+            android:layout_alignParentStart="true"
+            android:padding="8dp"
+            android:contentDescription="Buscar" />
 
-    <Spinner
-        android:id="@+id/spinnerFiltro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/tipos_algoritmos"/>
+        <!-- Ícono de filtro -->
+        <ImageView
+            android:id="@+id/iconoFiltro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:layout_alignParentEnd="true"
+            android:padding="8dp"
+            android:contentDescription="Filtrar" />
 
+        <!-- Campo de búsqueda oculto -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/iconoBusqueda"
+            android:layout_toStartOf="@id/iconoFiltro"
+            android:queryHint="Buscar algoritmo..."
+            android:visibility="gone" />
+
+        <!-- Spinner de filtro oculto -->
+        <Spinner
+            android:id="@+id/spinnerFiltro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/searchView"
+            android:entries="@array/tipos_algoritmos"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- Contenedor de datos -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerContainer">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerAlgoritmos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</LinearLayout>
 
+</RelativeLayout>
