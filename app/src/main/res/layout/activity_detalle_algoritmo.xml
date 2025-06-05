@@ -27,9 +27,9 @@
                 android:layout_height="wrap_content"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
                 android:gravity="center"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:textColor="?android:attr/textColorPrimary"/>
 
             <TextView
                 android:id="@+id/tvComplejidad"
@@ -47,7 +47,8 @@
             android:text="Descripción"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"/>
 
         <!-- Contenedor para la descripción -->
         <TextView
@@ -57,7 +58,8 @@
             android:textSize="16sp"
             android:padding="12dp"
             android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_border" />
+            android:background="@drawable/rounded_border"
+            android:textColor="?android:attr/textColorPrimary"/>
 
         <!-- Título: Usos -->
         <TextView
@@ -66,7 +68,8 @@
             android:text="Usos"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"/>
 
         <!-- Contenedor para los usos -->
         <TextView
@@ -76,7 +79,8 @@
             android:textSize="16sp"
             android:padding="12dp"
             android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_border" />
+            android:background="@drawable/rounded_border"
+            android:textColor="?android:attr/textColorPrimary"/>
 
         <!-- Título: Sintaxis -->
         <TextView
@@ -85,7 +89,8 @@
             android:text="Sintaxis"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"/>
 
         <!-- Contenedor para sintaxis dinámicas -->
         <LinearLayout
