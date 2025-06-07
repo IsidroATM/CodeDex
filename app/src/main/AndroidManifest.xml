@@ -14,13 +14,21 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
-            android:name=".lists.ContenidoListaFragment"
+            android:name=".details.DetalleAlgoritmoPropioActivity"
             android:exported="false"
             android:theme="@style/Theme.CodeDex.NoActionBar"/>
         <activity
-            android:name=".lists.ListActivity"
+            android:name=".activities.NuevoAlgoritmoActivity"
             android:exported="false"
             android:theme="@style/Theme.CodeDex.NoActionBar"/>
+        <activity
+            android:name=".lists.ContenidoListaFragment"
+            android:exported="false"
+            android:theme="@style/Theme.CodeDex.NoActionBar" />
+        <activity
+            android:name=".lists.ListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CodeDex.NoActionBar" />
         <activity
             android:name=".details.DetalleLenguajeActivity"
             android:exported="false"

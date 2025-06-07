@@ -99,6 +99,17 @@ public class DetalleAlgoritmoActivity extends AppCompatActivity {
                     String codigoConSaltos = codigo.replace("\\n", "\n");
                     codeView.setText(codigoConSaltos);
 
+                    // Listener para copiar al portapapeles
+                    codeView.setOnLongClickListener(v -> {
+                        android.content.ClipboardManager clipboard =
+                                (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                        android.content.ClipData clip = android.content.ClipData.newPlainText("Código copiado", codigoConSaltos);
+                        clipboard.setPrimaryClip(clip);
+
+                        Toast.makeText(this, "Código copiado al portapapeles", Toast.LENGTH_SHORT).show();
+                        return true;
+                    });
+
                     contenedorSintaxisDinamico.addView(tituloLenguaje);
                     contenedorSintaxisDinamico.addView(codeView);
                 }
