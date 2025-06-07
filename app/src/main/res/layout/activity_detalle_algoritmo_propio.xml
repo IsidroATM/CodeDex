@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_titulo_algoritmo"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título del algoritmo"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:id="@+id/tv_lenguaje_algoritmo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"
+            android:text="Lenguaje" />
+
+
+        <com.amrdeveloper.codeview.CodeView
+            android:id="@+id/code_view_ver"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#000000"
+            android:textColor="#00FF00"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:fontFamily="monospace"
+            android:gravity="top|start"
+            android:scrollbars="vertical"
+            android:editable="false" />
+
+    </LinearLayout>
+</ScrollView>

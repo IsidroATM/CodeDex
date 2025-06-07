@@ -9,7 +9,18 @@
         <item>Sort</item>
         <item>Search</item>
         <item>Graph</item>
-<!--        <item>recursivity</item>-->
-<!--        <item>Greedy</item>-->
+        <!--        <item>recursivity</item>-->
+        <!--        <item>Greedy</item>-->
     </string-array>
+    <string-array name="lenguajes_disponibles">
+        <item>Java</item>
+        <item>Python</item>
+        <item>C++</item>
+        <item>JavaScript</item>
+        <item>Kotlin</item>
+        <item>Otro</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

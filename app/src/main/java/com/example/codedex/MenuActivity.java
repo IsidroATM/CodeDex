@@ -15,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.codedex.fragments.AboutFragment;
+import com.example.codedex.fragments.AlgoritmosPropiosFragment;
 import com.example.codedex.fragments.HomeFragment;
 import com.example.codedex.fragments.SettingsFragment;
 import com.example.codedex.fragments.StateFragment;
@@ -179,7 +180,9 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 //                startActivity(intent);
                 loadFragment(new ListActivity());
 
-            }else if (id == R.id.nav_logout) {
+            } else if (id == R.id.nav_algoritmos) {
+                loadFragment(new AlgoritmosPropiosFragment());
+            } else if (id == R.id.nav_logout) {
                 performLogout();
             }
 

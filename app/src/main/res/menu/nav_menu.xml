@@ -27,8 +27,12 @@
             android:title="About Us"/>
         <item
             android:id="@+id/nav_list"
-            android:icon="@drawable/nav_about"
+            android:icon="@drawable/nav_list"
             android:title="Listas"/>
+        <item
+            android:id="@+id/nav_algoritmos"
+            android:icon="@drawable/nav_list"
+            android:title="Mis Algoritmos"/>
 
     </group>
 
