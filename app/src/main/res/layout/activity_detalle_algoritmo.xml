@@ -4,109 +4,114 @@
     android:id="@+id/scrollDetalleAlgoritmo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/background_dark">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:divider="?android:attr/dividerHorizontal"
+        android:showDividers="middle">
 
-        <!-- Tarjeta con el nombre y la complejidad -->
+        <!-- Cabecera -->
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:background="@drawable/rounded_border"
-            android:layout_marginBottom="24dp">
+            android:padding="20dp"
+            android:background="@drawable/card_code_style"
+            android:layout_marginBottom="24dp"
+            android:elevation="4dp">
 
             <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_marginBottom="8dp"
-                android:textColor="?android:attr/textColorPrimary"/>
+                android:textColor="@color/colorAccent"/>
 
             <TextView
                 android:id="@+id/tvComplejidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"
-                android:gravity="center" />
+                android:textSize="14sp"
+                android:textColor="@color/gray_light"
+                android:gravity="center"/>
         </LinearLayout>
 
-        <!-- Título: Descripción -->
+        <!-- Sección Descripción -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Descripción"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/black"/>
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/white"/>
 
-        <!-- Contenedor para la descripción -->
         <TextView
             android:id="@+id/tvDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:background="@drawable/code_block_background"
             android:padding="12dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_border"
-            android:textColor="?android:attr/textColorPrimary"/>
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="24dp"/>
 
-        <!-- Título: Usos -->
+        <!-- Sección Usos -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Usos"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/black"/>
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/white"/>
 
-        <!-- Contenedor para los usos -->
         <TextView
             android:id="@+id/tvProyectos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:background="@drawable/code_block_background"
             android:padding="12dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_border"
-            android:textColor="?android:attr/textColorPrimary"/>
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="24dp"/>
 
-        <!-- Título: Sintaxis -->
+        <!-- Sección Sintaxis -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sintaxis"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/black"/>
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/white"/>
 
-        <!-- Contenedor para sintaxis dinámicas -->
         <LinearLayout
             android:id="@+id/contenedorSintaxisDinamico"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp"/>
 
+        <!-- Botón -->
         <Button
             android:id="@+id/btnAgregarALista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar a lista"
-            android:layout_margin="16dp"
-            android:backgroundTint="@color/purple_500"
-            android:textColor="@android:color/white"/>
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-medium"/>
     </LinearLayout>
 </ScrollView>

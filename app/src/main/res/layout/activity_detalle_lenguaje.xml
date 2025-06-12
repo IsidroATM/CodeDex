@@ -1,101 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollDetalleLenguaje"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/light_silver">
+    android:background="#121212"
+    android:padding="16dp">
 
     <LinearLayout
         android:id="@+id/containerDetalleLenguaje"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <!-- Tarjeta principal con título, fundador y año -->
+        <!-- Tarjeta con info principal -->
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_border">
+            android:background="@drawable/card_background_dark">
 
             <TextView
                 android:id="@+id/textTituloDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:textColor="#FF9800"
                 android:gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:id="@+id/textFundadorLenguaje"
-                android:textSize="16sp"
-                android:layout_marginBottom="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#E0E0E0"
+                android:layout_marginBottom="4dp"/>
 
             <TextView
                 android:id="@+id/textAnioLenguaje"
-                android:textSize="16sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#E0E0E0"/>
         </LinearLayout>
 
         <!-- Sección: Descripción -->
         <TextView
             android:text="Descripción"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="#FF9800"
             android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/textDescripcionLenguaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:padding="12dp"
-            android:background="@drawable/rounded_border"
-            android:layout_marginBottom="24dp" />
+            android:background="@drawable/card_background_dark"
+            android:layout_marginBottom="24dp"/>
 
-        <!-- Sección: Proyectos -->
+        <!-- Sección: Proyectos comunes -->
         <TextView
             android:text="Proyectos comunes"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="#FF9800"
             android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/textProyectosLenguaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:padding="12dp"
-            android:background="@drawable/rounded_border"
-            android:layout_marginBottom="24dp" />
+            android:background="@drawable/card_background_dark"
+            android:layout_marginBottom="24dp"/>
 
         <!-- Sección: IDEs -->
         <TextView
             android:text="IDEs recomendados"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="#FF9800"
             android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:id="@+id/containerIDES"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="24dp" />
-
-
+            android:background="@drawable/card_background_dark"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"/>
     </LinearLayout>
 </ScrollView>
