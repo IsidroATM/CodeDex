@@ -1,68 +1,85 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="20dp"
+    android:background="#121212"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Etiqueta del nombre del algoritmo -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Nombre del algoritmo:"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="#FF9800"
+        android:layout_marginBottom="6dp"/>
 
+    <!-- Campo para nombre del algoritmo -->
     <EditText
         android:id="@+id/et_titulo_algoritmo"
         android:hint="Escribe el nombre aquí"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:padding="8dp"
-        android:background="@android:drawable/edit_text"/>
+        android:layout_marginBottom="20dp"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/edit_text_dark"
+        android:textColorHint="#AAAAAA"
+        android:fontFamily="sans-serif"/>
 
+    <!-- Etiqueta para código -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Escribe tu algoritmo:"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="#FF9800"
+        android:layout_marginBottom="6dp"/>
 
+    <!-- Editor de código -->
     <com.amrdeveloper.codeview.CodeView
         android:id="@+id/code_view"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_weight="1"
-        android:background="#000000"
+        android:background="#1E1E1E"
         android:textColor="#00FF00"
-        android:textSize="16sp"
-        android:padding="8dp"
+        android:textSize="15sp"
+        android:padding="12dp"
         android:fontFamily="monospace"
         android:gravity="top|start"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        android:layout_marginBottom="16dp"/>
 
+    <!-- Etiqueta para el lenguaje -->
     <TextView
         android:id="@+id/tv_lenguaje_algoritmo_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Seleccione el Lenguaje"
         android:textSize="14sp"
-        android:textColor="#666666" />
+        android:textColor="#B0BEC5"
+        android:layout_marginBottom="4dp"/>
 
+    <!-- Spinner para seleccionar lenguaje -->
     <Spinner
         android:id="@+id/spinner_lenguaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        android:background="@drawable/spinner_dark"
+        android:popupBackground="#2C2C2C"
+        android:layout_marginBottom="24dp"/>
 
-
-
+    <!-- Botón para guardar -->
     <Button
         android:id="@+id/btn_guardar_algoritmo"
         android:text="Guardar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+        android:backgroundTint="#FF9800"
+        android:textColor="#000000"
+        android:padding="12dp"
+        android:textStyle="bold"/>
 </LinearLayout>
