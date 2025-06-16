@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="24dp"
-    app:cardElevation="6dp"
-    android:background="@drawable/card_background">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="#1F2B3A">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:gravity="center_vertical"
         android:padding="16dp">
 
-        <!-- Sección izquierda -->
+        <!-- Contenido de la izquierda -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,12 +29,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bubble Sort"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#004D40"
-                android:layout_marginTop="4dp"/>
+                android:textColor="#4EE4A7"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium" />
 
-           <!-- Chips de categoría -->
+            <!-- Chips de categoría -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,23 +47,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Complejidad: O(n)"
-                    android:padding="6dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:background="@drawable/chip_bg"
-                    android:textColor="#ffffff"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif"
                     android:layout_marginEnd="8dp"/>
             </LinearLayout>
         </LinearLayout>
 
+        <!-- Ícono del algoritmo -->
         <ImageView
             android:id="@+id/iconoAlgoritmo"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginStart="12dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
             android:background="@drawable/circle_background"
-            android:padding="8dp"
+            android:padding="12dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_algoritmo"/>
+            android:src="@drawable/ic_algoritmo"
+            android:contentDescription="Ícono del algoritmo"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
