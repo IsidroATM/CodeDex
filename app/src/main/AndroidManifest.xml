@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyAppConfigurations"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,13 +15,17 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.EditarAlgoritmoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CodeDex.NoActionBar" />
+        <activity
             android:name=".details.DetalleAlgoritmoPropioActivity"
             android:exported="false"
-            android:theme="@style/Theme.CodeDex.NoActionBar"/>
+            android:theme="@style/Theme.CodeDex.NoActionBar" />
         <activity
             android:name=".activities.NuevoAlgoritmoActivity"
             android:exported="false"
-            android:theme="@style/Theme.CodeDex.NoActionBar"/>
+            android:theme="@style/Theme.CodeDex.NoActionBar" />
         <activity
             android:name=".lists.ContenidoListaFragment"
             android:exported="false"
