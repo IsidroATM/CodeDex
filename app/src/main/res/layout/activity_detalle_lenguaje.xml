@@ -2,8 +2,8 @@
     android:id="@+id/scrollDetalleLenguaje"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
-    android:padding="16dp">
+    android:background="#1e2b33"
+    android:padding="20dp">
 
     <LinearLayout
         android:id="@+id/containerDetalleLenguaje"
@@ -17,9 +17,11 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="20dp"
             android:layout_marginBottom="24dp"
-            android:background="@drawable/card_background_dark">
+            android:background="@drawable/card_code_style"
+            android:elevation="6dp"
+            android:clipToOutline="true">
 
             <TextView
                 android:id="@+id/textTituloDetalle"
@@ -27,24 +29,25 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="#FF9800"
                 android:gravity="center"
-                android:layout_marginBottom="8dp"/>
+                android:textColor="#4EE4A7"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif-medium" />
 
             <TextView
                 android:id="@+id/textFundadorLenguaje"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#E0E0E0"
-                android:layout_marginBottom="4dp"/>
+                android:textSize="15sp"
+                android:textColor="#CFD8DC"
+                android:layout_marginBottom="4dp" />
 
             <TextView
                 android:id="@+id/textAnioLenguaje"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#E0E0E0"/>
+                android:textSize="15sp"
+                android:textColor="#CFD8DC" />
         </LinearLayout>
 
         <!-- Sección: Descripción -->
@@ -52,56 +55,60 @@
             android:text="Descripción"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#FF9800"
+            android:textColor="#4EE4A7"
             android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textDescripcionLenguaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:padding="12dp"
-            android:background="@drawable/card_background_dark"
-            android:layout_marginBottom="24dp"/>
+            android:textColor="#ECEFF1"
+            android:padding="16dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:background="@drawable/code_block_background"
+            android:layout_marginBottom="24dp" />
 
         <!-- Sección: Proyectos comunes -->
         <TextView
             android:text="Proyectos comunes"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#FF9800"
+            android:textColor="#4EE4A7"
             android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textProyectosLenguaje"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:padding="12dp"
-            android:background="@drawable/card_background_dark"
-            android:layout_marginBottom="24dp"/>
+            android:textColor="#ECEFF1"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:padding="16dp"
+            android:background="@drawable/code_block_background"
+            android:layout_marginBottom="24dp" />
 
         <!-- Sección: IDEs -->
         <TextView
             android:text="IDEs recomendados"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#FF9800"
+            android:textColor="#4EE4A7"
             android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/containerIDES"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/card_background_dark"
-            android:padding="12dp"
-            android:layout_marginBottom="24dp"/>
+            android:background="@drawable/code_block_background"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp" />
     </LinearLayout>
 </ScrollView>

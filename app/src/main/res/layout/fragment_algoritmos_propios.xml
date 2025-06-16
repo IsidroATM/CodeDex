@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#1e2b33">
 
     <!-- Título -->
     <TextView
@@ -8,18 +9,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:text="Mis Algoritmos:"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:layout_marginStart="20dp"
+        android:text="Mis Algoritmos"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#4EE4A7"
+        android:fontFamily="sans-serif-medium" />
 
-    <!-- RecyclerView debajo del título -->
+    <!-- Lista de algoritmos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_algoritmos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tv_titulo_algoritmos"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="80dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp" />
 
     <!-- Botón flotante -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,7 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
+        android:layout_margin="24dp"
         android:src="@drawable/ic_code"
-        android:contentDescription="Agregar"/>
+        android:contentDescription="Agregar nuevo algoritmo"
+        android:backgroundTint="#FFB74D"
+        android:tint="#1E1E1E"
+        android:elevation="6dp" />
 </RelativeLayout>

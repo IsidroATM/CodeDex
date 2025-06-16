@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212">
+    android:background="#1e2b33">
 
     <LinearLayout
         android:orientation="vertical"
-        android:padding="24dp"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
         <!-- Título del algoritmo -->
         <TextView
@@ -17,11 +16,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Título del algoritmo"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="#FF9800"
+            android:textColor="#4EE4A7"
             android:layout_marginTop="48dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium" />
 
         <!-- Lenguaje de programación -->
         <TextView
@@ -29,27 +29,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lenguaje: Python"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:textColor="#B0BEC5"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif" />
 
         <!-- Vista de código -->
         <com.amrdeveloper.codeview.CodeView
             android:id="@+id/code_view_ver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="300dp"
-            android:background="#1E1E1E"
-            android:textColor="#00FF00"
-            android:textSize="14sp"
-            android:padding="16dp"
+            android:minHeight="320dp"
+            android:background="#263238"
+            android:textColor="#ECEFF1"
+            android:textSize="15sp"
+            android:padding="20dp"
             android:fontFamily="monospace"
             android:gravity="top|start"
             android:scrollbars="vertical"
             android:editable="false"
-            android:elevation="4dp"
-            android:layout_marginBottom="32dp"
+            android:elevation="6dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="40dp"
             android:outlineProvider="bounds"
             android:clipToOutline="true" />
     </LinearLayout>
