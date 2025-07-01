@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Opciones de idioma para el spinner de configuración -->
+    <string-array name="language_options">
+        <item>Español</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Português</item>
+        <item>Italiano</item>
+        <item>日本語</item>
+        <item>한국어</item>
+        <item>中文</item>
+    </string-array>
+
+    <!-- Otras posibles listas para personalización futura -->
+
+    <!-- Temas disponibles -->
+    <string-array name="theme_options">
+        <item>Claro</item>
+        <item>Oscuro</item>
+        <item>Sistema</item>
+    </string-array>
+
+    <!-- Lenguajes de programación preferidos -->
+    <string-array name="preferred_languages">
+        <item>Java</item>
+        <item>Python</item>
+        <item>C++</item>
+        <item>JavaScript</item>
+        <item>Kotlin</item>
+    </string-array>
+</resources>
