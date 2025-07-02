@@ -18,7 +18,6 @@ import com.example.codedex.fragments.AboutFragment;
 import com.example.codedex.fragments.AlgoritmosPropiosFragment;
 import com.example.codedex.fragments.HomeFragment;
 import com.example.codedex.fragments.SettingsFragment;
-import com.example.codedex.fragments.StateFragment;
 import com.example.codedex.lists.ListActivity;
 import com.example.codedex.models.UserManager;
 import com.google.android.material.navigation.NavigationView;
@@ -171,8 +170,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 loadFragment(new HomeFragment());
             } else if (id == R.id.nav_settings) {
                 loadFragment(new SettingsFragment());
-            } else if (id == R.id.nav_state) {
-                loadFragment(new StateFragment());
             } else if (id == R.id.nav_about) {
                 loadFragment(new AboutFragment());
             } else if (id == R.id.nav_list) {
