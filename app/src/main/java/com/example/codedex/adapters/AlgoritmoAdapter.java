@@ -46,7 +46,7 @@ public class AlgoritmoAdapter extends RecyclerView.Adapter<AlgoritmoAdapter.View
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        //Cambiar la vista
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetalleAlgoritmoActivity.class);
             intent.putExtra("algoritmo", algoritmo);
@@ -58,13 +58,6 @@ public class AlgoritmoAdapter extends RecyclerView.Adapter<AlgoritmoAdapter.View
     public int getItemCount() {
         return algoritmos.size();
     }
-
-    public void addAlgoritmos(List<Algoritmo> nuevosAlgoritmos) {
-        int posicionInicial = algoritmos.size();
-        algoritmos.addAll(nuevosAlgoritmos);
-        notifyItemRangeInserted(posicionInicial, nuevosAlgoritmos.size());
-    }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombre, tvComplejidad;

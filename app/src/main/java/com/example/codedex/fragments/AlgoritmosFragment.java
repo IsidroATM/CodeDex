@@ -30,13 +30,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-//Unused
-//import retrofit2.Call;
-//import retrofit2.Callback;
-//import retrofit2.Response;
-//import com.example.codedex.services.ApiClient;
-//import com.example.codedex.services.ApiService;
-
 public class AlgoritmosFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -122,9 +115,6 @@ public class AlgoritmosFragment extends Fragment {
         cargarDatos();
         return view;
     }
-
-
-
     private void cargarDatos() {
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("algoritmos");
         swipeRefreshLayout.setRefreshing(true);
@@ -151,7 +141,6 @@ public class AlgoritmosFragment extends Fragment {
             }
         });
     }
-
     private void filtrarLista(String textoBusqueda, String tipo) {
         List<Algoritmo> listaFiltrada = new ArrayList<>();
         for (Algoritmo algoritmo : listaCompleta) {

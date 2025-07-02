@@ -81,7 +81,6 @@ public class LenguajesFragment extends Fragment {
 
     private void cargarDatos() {
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("lenguajes");
-
         swipeRefreshLayout.setRefreshing(true);
 
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
